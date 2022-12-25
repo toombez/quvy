@@ -1,6 +1,5 @@
 import { Client } from 'discord.js'
-
-import * as dotenv from 'dotenv'
+import dotenv from 'dotenv'
 
 dotenv.config()
 const token = process.env.token
@@ -12,10 +11,10 @@ const client = new Client({
         'GuildMembers',
         'GuildMessages',
     ]
-});
+})
 
 client.on('ready', (client) => {
     console.log(`${client.user.username} ready`)
-});
+})
 
-client.login(token);
+client.login(token)
