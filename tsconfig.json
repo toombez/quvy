@@ -5,6 +5,7 @@
     "target": "ES6",
     "baseUrl": "./src",
     "moduleResolution": "Node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
