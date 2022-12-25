@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "./out",
+    "target": "ES6",
+    "baseUrl": "./src",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true
+  }
+}
