@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon -L src/main.ts -P 4000 --w ./src --ignore node_modules --no-deps",
     "build": "tsc",
-    "docker:dev": "docker compose up"
+    "docker:dev": "docker compose up",
+    "deploy-commands:dev": "ts-node src/deploy-commands.ts"
   },
   "dependencies": {
     "discord.js": "^14.7.1"
