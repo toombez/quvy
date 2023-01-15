@@ -1,7 +1,6 @@
-import { Collection } from 'discord.js'
 import PettyClient from './models/PettyClient'
 import dotenv from 'dotenv'
-import { ICommand } from 'types'
+import CommandsCollection from './models/CommandsCollection'
 
 dotenv.config()
 
@@ -14,8 +13,17 @@ const client = new PettyClient({
     ]
 })
 
-client.on('ready', (client) => {
-    console.log(`${client.user.username} ready`)
+const commandsCollection = new CommandsCollection()
+
+client.on('ready', async (_client) => {
+    console.log(`${_client.user.username} ready`)
+})
+
+client.on('interactionCreate', (interaction) => {
+    if (!interaction.isCommand()) return
+
+    const command = commandsCollection.get(interaction.commandName)
+    command?.execute(interaction)
 })
 
 client.login(process.env.token)
