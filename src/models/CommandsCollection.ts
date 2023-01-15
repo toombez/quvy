@@ -5,6 +5,18 @@ import path from 'path'
 import fs from 'fs'
 
 export default class CommandsCollection extends Collection<string, ICommand> {
+    /**
+     * Public is loaded commands
+     */
+    public get isLoaded() {
+        return this._isLoaded
+    }
+
+    /**
+     * Is loaded flag
+     */
+    private _isLoaded: boolean = false;
+
     constructor(
         /**
          * Path to directory with commands
@@ -13,10 +25,12 @@ export default class CommandsCollection extends Collection<string, ICommand> {
     ) {
         super()
 
-        this._commands.then(commands => {
+        this.loadCommands().then(commands => {
             commands.forEach(command => {
                 this.set(command.data.name, command)
             })
+
+            this._isLoaded = true
         })
     }
 
@@ -36,7 +50,7 @@ export default class CommandsCollection extends Collection<string, ICommand> {
      *
      * Throws error if file in `commands` folder isn't implements command interface
      */
-    private get _commands(): Promise<ICommand[]> {
+    private loadCommands(): Promise<ICommand[]> {
         return Promise.all(this.commandsFiles.map(async file => {
             const command = (await import(path.join(this.commandsPath, file))).default
 
@@ -46,5 +60,25 @@ export default class CommandsCollection extends Collection<string, ICommand> {
 
             return command
         }))
+    }
+
+    /**
+     * Wait commands loaded
+     *
+     * @returns commands loaded
+     *
+     * TODO(code style): fix nested level
+     */
+    public waitLoaded() {
+        const REFRESH_INTERVAL_MS = 100
+
+        return new Promise((res) => {
+            const interval = setInterval(() => {
+                if (!this._isLoaded) return
+
+                clearInterval(interval)
+                res(true)
+            }, REFRESH_INTERVAL_MS)
+        })
     }
 }
