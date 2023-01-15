@@ -4,14 +4,45 @@ import {
     GuildApplicationCommandManager
 } from "discord.js"
 import { ICommand } from "types"
+import CommandsCollection from "./CommandsCollection"
 import PettyClient from "./PettyClient"
 
-type CommandsCollection = GuildApplicationCommandManager | ApplicationCommandManager
+type DiscordCommandsCollection = GuildApplicationCommandManager | ApplicationCommandManager
 
 export default class CommandManager {
     constructor(
-        public readonly client: PettyClient
+        public readonly client: PettyClient,
     ) {}
+
+    /**
+     * Register collection in application or guild
+     *
+     * @param collection commands collection
+     * @param guild guild where register collection
+     */
+    public async registerCommandsCollection(collection: CommandsCollection, guild: Guild) {
+        await collection.waitLoaded()
+
+        collection.forEach(command => {
+            this.registerCommand(command, guild)
+        })
+    }
+
+    /**
+     * Delete all commands in application and guilds
+     */
+    public async deleteAllCommands() {
+        await this.client.application?.commands.fetch()
+        this.client.application?.commands.cache.forEach(command => {
+            command.delete()
+        })
+
+        await this.client.guilds.fetch()
+        this.client.guilds.cache.forEach(async guild => {
+            await guild.commands.fetch()
+            guild.commands.cache.forEach(command => command.delete())
+        })
+    }
 
     /**
      * Register command in application or guild
@@ -32,8 +63,7 @@ export default class CommandManager {
      * @param guild guild where delete command
      */
     public async deleteCommand(command: ICommand, guild?: Guild): Promise<void> {
-        const collection: CommandsCollection | undefined = guild?.commands
-            || this.client.application?.commands
+        const collection = guild?.commands || this.client.application?.commands
         if (!collection) return
 
         const _command = await this.findCommand(command, collection)
@@ -49,7 +79,7 @@ export default class CommandManager {
      * @param collection collection where find
      * @returns command
      */
-    private async findCommand(command: ICommand, collection: CommandsCollection) {
+    private async findCommand(command: ICommand, collection: DiscordCommandsCollection) {
         await collection.fetch({})
         return collection.cache.find(c => c.name === command.data.name)
     }
