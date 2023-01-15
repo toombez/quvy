@@ -20,7 +20,7 @@ export default class CommandManager {
      * @param collection commands collection
      * @param guild guild where register collection
      */
-    public async registerCommandsCollection(collection: CommandsCollection, guild: Guild) {
+    public async registerCommandsCollection(collection: CommandsCollection, guild?: Guild) {
         await collection.waitLoaded()
 
         collection.forEach(command => {
