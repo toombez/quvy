@@ -1,0 +1,3 @@
+{
+    "extends": "@quvy/tsconfig/base.json"
+}

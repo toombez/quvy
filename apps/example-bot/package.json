@@ -6,9 +6,12 @@
     "dev": "nodemon src/main.ts -P 4000 --w ./src --ignore node_modules --no-deps"
   },
   "devDependencies": {
+    "@quvy/core": "*",
+    "@quvy/tsconfig": "*",
+    "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
-    "@quvy/core": "*"
+    "typescript": "^4.9.4"
   }
 }
