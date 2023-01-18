@@ -1,3 +1,12 @@
 {
-    "extends": "@quvy/tsconfig/base.json"
+    "extends": "@quvy/tsconfig/base.json",
+    "compilerOptions": {
+        "baseUrl": "src",
+        "paths": {
+            "@types": ["types.ts"],
+            "@utils": ["utils.ts"],
+            "@models": ["models"],
+            "@": ["."]
+        },
+    }
 }

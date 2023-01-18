@@ -1,6 +1,6 @@
 import { Collection } from "discord.js"
-import { ICommand } from "../types"
-import { isCommand } from "../utils"
+import { ICommand } from "@types"
+import { isCommand } from "@utils"
 import path from 'path'
 import fs from 'fs'
 
