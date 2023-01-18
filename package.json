@@ -1,26 +1,16 @@
 {
-  "name": "quvi",
+  "name": "quvy",
   "version": "0.0.0",
-  "main": "src/main.ts",
+  "private": true,
   "scripts": {
-    "dev": "nodemon src/main.ts -P 4000 --w ./src --ignore node_modules --no-deps",
-    "build": "tsc",
-    "docker:dev": "docker compose up"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel"
   },
-  "dependencies": {
-    "discord.js": "^14.7.1"
-  },
-  "devDependencies": {
-    "dotenv": "^16.0.3",
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
-  },
-  "description": "Itch.io Discord Bot Jam #8",
-  "keywords": [
-    "discord",
-    "jam"
+  "workspaces": [
+    "apps/*",
+    "packages/*"
   ],
-  "author": "toombez",
-  "license": "MIT"
+  "devDependencies": {
+    "turbo": "^1.7.0"
+  }
 }

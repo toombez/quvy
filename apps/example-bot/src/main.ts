@@ -1,6 +1,10 @@
-import QuviClient from './models/QuviClient'
+import {
+    QuviClient,
+    CommandsCollection,
+} from '@quvy/core'
+
+import path from 'path'
 import dotenv from 'dotenv'
-import CommandsCollection from './models/CommandsCollection'
 
 dotenv.config()
 
@@ -13,7 +17,7 @@ const client = new QuviClient({
     ]
 })
 
-const commandsCollection = new CommandsCollection()
+const commandsCollection = new CommandsCollection(path.join('./'))
 
 client.on('ready', async (_client) => {
     console.log(`${_client.user.username} ready`)
