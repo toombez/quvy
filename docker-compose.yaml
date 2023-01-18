@@ -1,7 +1,0 @@
-services:
-    bot:
-        build: .
-        command: sh -c "yarn run dev"
-        volumes:
-            - .:/app
-            - ./node_modules:/usr/app/node_modules
