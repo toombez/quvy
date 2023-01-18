@@ -1,4 +1,9 @@
-import {} from '@quvy/core'
+import {
+    CommandsCollection,
+    QuviClient,
+} from '@quvy/core'
+
+import dotenv from 'dotenv'
 
 dotenv.config()
 

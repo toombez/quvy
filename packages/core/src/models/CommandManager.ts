@@ -3,7 +3,7 @@ import {
     Guild,
     GuildApplicationCommandManager
 } from "discord.js"
-import { ICommand } from "types"
+import { ICommand } from "../types"
 import CommandsCollection from "./CommandsCollection"
 import PettyClient from "./QuviClient"
 
