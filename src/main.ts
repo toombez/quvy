@@ -1,10 +1,10 @@
-import PettyClient from './models/PettyClient'
+import QuviClient from './models/QuviClient'
 import dotenv from 'dotenv'
 import CommandsCollection from './models/CommandsCollection'
 
 dotenv.config()
 
-const client = new PettyClient({
+const client = new QuviClient({
     intents: [
         'Guilds',
         'MessageContent',
