@@ -1,0 +1,11 @@
+{
+  "name": "@quvy/example-bot",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "@quvy/core": "*"
+  }
+}
