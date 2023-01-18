@@ -1,6 +1,11 @@
 {
   "name": "quvy",
   "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "devDependencies": {
     "turbo": "^1.7.0"
   }

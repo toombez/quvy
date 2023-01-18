@@ -1,12 +1,3 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "outDir": "./out",
-    "target": "es2020",
-    "baseUrl": "./src",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "module": "CommonJS",
-  }
+    "extends": "@quvy/tsconfig/base.json"
 }
