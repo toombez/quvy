@@ -2,6 +2,9 @@
   "name": "@quvy/example-bot",
   "version": "0.0.0",
   "main": "src/index.ts",
+  "scripts": {
+    "dev": "nodemon src/main.ts -P 4000 --w ./src --ignore node_modules --no-deps"
+  },
   "devDependencies": {
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20",

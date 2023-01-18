@@ -2,6 +2,10 @@
   "name": "quvy",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
