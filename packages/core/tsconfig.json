@@ -8,5 +8,6 @@
             "@models": ["models"],
             "@": ["."]
         },
+        "outDir": "dist"
     }
 }
