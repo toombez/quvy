@@ -5,7 +5,7 @@ import {
 } from "discord.js"
 import { ICommand } from "types"
 import CommandsCollection from "./CommandsCollection"
-import PettyClient from "./PettyClient"
+import PettyClient from "./QuviClient"
 
 type DiscordCommandsCollection = GuildApplicationCommandManager | ApplicationCommandManager
 
